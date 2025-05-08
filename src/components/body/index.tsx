@@ -15,6 +15,7 @@ import Footer from "../footer";
 import { useDailyReset } from "@/lib/hooks/useDailyReset";
 import { useNotificationReminder } from "@/lib/hooks/useNotificationReminder";
 import { useLocalStorageSync } from "@/lib/hooks/useLocalStoray";
+import { useEffect } from "react";
 
 const Body: React.FC = () => {
   const { openSetter, openAdder, settings } = useAppSelector(
@@ -25,6 +26,16 @@ const Body: React.FC = () => {
   useNotificationReminder();
   useLocalStorageSync();
 
+  useEffect(() => {
+    const html = document.documentElement;
+
+    if (settings.darkMode) {
+      html.classList.add("dark");
+    } else {
+      html.classList.remove("dark");
+    }
+  }, [settings.darkMode]);
+
   const navigationOptions: NavigationOptions[] = [
     { icon: <FiHome className="lg:text-xl" />, option: "dashboard" },
     { icon: <FiBarChart2 className="lg:text-xl" />, option: "stats" },
@@ -33,7 +44,11 @@ const Body: React.FC = () => {
   ];
 
   return (
-    <main className={`${settings.darkMode ? "dark" : ""} relative w-full`}>
+    <main
+      className={`${
+        settings.darkMode ? "dark" : ""
+      } relative w-full bg-gray-100 dark:bg-zinc-900`}
+    >
       <Modal
         isOpen={openSetter}
         shouldCloseOnOverlayClick
