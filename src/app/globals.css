@@ -31,3 +31,8 @@ body {
 th {
   @apply truncate;
 }
+
+input,
+textarea {
+  font-size: 16px;
+}

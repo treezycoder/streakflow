@@ -65,6 +65,7 @@ const Notification: React.FC<NotificationProps> = ({ notifications }) => {
             onNavigate={handleNavigate}
             innerRef={dropdownRef}
             preview
+            title="Notifications"
           />
         )}
       </AnimatePresence>

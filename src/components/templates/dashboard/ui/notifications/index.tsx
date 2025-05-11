@@ -15,6 +15,7 @@ import { BsDot } from "react-icons/bs";
 import { FiCheckCircle, FiTrash2 } from "react-icons/fi";
 
 interface NotificationPreviewProps {
+  title?: string;
   preview?: boolean;
   className?: boolean;
   innerRef?: RefObject<HTMLDivElement | null>;
@@ -26,6 +27,7 @@ const NotificationPreview: React.FC<NotificationPreviewProps> = ({
   className = "",
   innerRef,
   onNavigate,
+  title = "Recent Notifications",
 }) => {
   const { notifications } = useAppSelector((state) => state.app);
   const dispatch = useAppDispatch();
@@ -56,12 +58,12 @@ const NotificationPreview: React.FC<NotificationPreviewProps> = ({
       ref={innerRef}
       className={`${
         preview ? "absolute z-50" : ""
-      } font-inter  right-0 mt-2 flex flex-col gap-2 max-w-[450px] w-full border-zinc-200 border dark:border-zinc-700 min-w-fit p-4 lg-p6 max-h-96 overflow-x-hidden overflow-y-auto shadow-md bg-white dark:bg-gray-900 rounded-lg  ${className}`}
+      } font-inter  -right-4 mt-2 flex flex-col gap-2 max-w-[450px] w-full border-zinc-200 border dark:border-zinc-700 min-w-fit p-4 lg-p6 max-h-96 overflow-x-hidden overflow-y-auto shadow-md bg-white dark:bg-gray-900 rounded-lg  ${className}`}
     >
       {/* Title */}
       <div className="flex items-center gap-8 justify-between pb-2 border-b border-gray-200 dark:border-zinc-700">
         <h3 className="text-base truncate font-poppins font-semibold text-gray-900 dark:text-white">
-          Recent Notifications
+          {title}
         </h3>
         {preview && notifications.length > 0 && (
           <div className="flex gap-2">
@@ -130,7 +132,7 @@ const NotificationPreview: React.FC<NotificationPreviewProps> = ({
             </motion.div>
           ))
         ) : (
-          <p className="text-center sm:w-[350px] text-sm text-gray-500 dark:text-zinc-400 mt-4">
+          <p className="text-center truncate sm:w-[350px] text-sm text-gray-500 dark:text-zinc-400 mt-4">
             No notifications yet.
           </p>
         )}

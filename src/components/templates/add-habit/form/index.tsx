@@ -112,7 +112,7 @@ const AddHabitForm: React.FC<{ onSubmit: (habit: Habits) => void }> = ({
       </div>
 
       {/* Submit Button */}
-      <Button className="font-inter" type="submit">
+      <Button className="font-inter mt-4 md:mt-0" type="submit">
         Add Habit
       </Button>
     </form>

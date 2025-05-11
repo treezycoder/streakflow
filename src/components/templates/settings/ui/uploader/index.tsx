@@ -17,7 +17,7 @@ const ImageUploader = ({
   };
 
   return (
-    <div className="flex items-center space-x-4">
+    <div className="flex items-center gap-4">
       <div className="w-16 h-16 relative rounded-full overflow-hidden">
         <Image
           src={value || "/default-avatar.jpg"}
@@ -27,7 +27,7 @@ const ImageUploader = ({
           className="object-cover w-full h-full"
         />
       </div>
-      <label className="text-sm font-medium text-blue-600 cursor-pointer flex items-center space-x-2">
+      <label className="text-sm font-medium text-blue-600 cursor-pointer flex items-center gap-2">
         <FaUpload />
         <span>Upload Image</span>
         <input

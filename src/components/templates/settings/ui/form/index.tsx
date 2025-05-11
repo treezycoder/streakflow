@@ -63,7 +63,7 @@ const SettingsForm = () => {
         User Settings
       </h2>
 
-      <div className="space-y-6">
+      <div className="flex flex-col gap-6">
         <ImageUploader value={formData.image} onChange={handleImageChange} />
 
         <div className="flex flex-col gap-2">
